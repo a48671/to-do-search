@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import { Wrapper, BlockForButtons, BlockForInput } from './styled';
+import { Wrapper, ButtonsList, BlockForInput, ButtonsItem } from './styled';
 import InputTask from './InputTask';
+import Button from '../Batton';
 
 class Control extends PureComponent {
   render() {
@@ -11,7 +12,14 @@ class Control extends PureComponent {
         <BlockForInput>
           <InputTask />
         </BlockForInput>
-        <BlockForButtons>Buttons</BlockForButtons>
+        <ButtonsList>
+          <ButtonsItem>
+            <Button title="Add task" />
+          </ButtonsItem>
+          <ButtonsItem>
+            <Button title="Search" />
+          </ButtonsItem>
+        </ButtonsList>
       </Wrapper>
     );
   }
