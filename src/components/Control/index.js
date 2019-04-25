@@ -1,16 +1,17 @@
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import {Wrapper} from './styled';
+import { Wrapper, BlockForButtons, BlockForInput } from './styled';
 
 class Control extends PureComponent {
-	render() {
-		return (
-			<Wrapper>
-				
-			</Wrapper>
-		);
-	}
+  render() {
+    return (
+      <Wrapper>
+        <BlockForInput>Input</BlockForInput>
+        <BlockForButtons>Buttons</BlockForButtons>
+      </Wrapper>
+    );
+  }
 }
 
 Control.propTypes = {};
