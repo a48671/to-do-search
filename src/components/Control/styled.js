@@ -17,4 +17,5 @@ export const BlockForButtons = styled.div.attrs({
   className: 'control__input',
 })`
   width: 50%;
+  padding-left: 15px;
 `;
