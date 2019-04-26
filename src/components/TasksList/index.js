@@ -1,8 +1,10 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { Wrapper, Message, ShowAllTasks } from './styled';
 import TaskItem from './TaskItem';
+import { showAllTasks } from '../../redux/ac/tasks';
 
 class TasksList extends PureComponent {
   render() {
@@ -17,8 +19,10 @@ class TasksList extends PureComponent {
   }
 
   showAllTasks = () => {
-    if (!this.props.filter) return null;
-    return <ShowAllTasks onClick={() => null}>Show all tasks</ShowAllTasks>;
+    const { filter, showAllTasks } = this.props;
+
+    if (!filter) return null;
+    return <ShowAllTasks onClick={showAllTasks}>Show all tasks</ShowAllTasks>;
   };
 
   renderTasks = tasks => {
@@ -47,4 +51,13 @@ TasksList.defaultProps = {
   filter: false,
 };
 
-export default TasksList;
+const mapStateToProps = dispatch => {
+  return {
+    showAllTasks: () => dispatch(showAllTasks()),
+  };
+};
+
+export default connect(
+  null,
+  mapStateToProps
+)(TasksList);

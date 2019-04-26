@@ -1,4 +1,4 @@
-import { ADD_TASK, FILTER_TASKS } from '../constants/tasks';
+import { ADD_TASK, FILTER_TASKS, SHOW_ALL_TASKS } from '../constants/tasks';
 import { fromJS, List } from 'immutable';
 
 const saveLocalTasks = window.localStorage.getItem('to_do_tasks')
@@ -16,11 +16,15 @@ export default (state = fromJS(initialState), action) => {
 
   switch (type) {
     case ADD_TASK:
-      return state.update('tasks', value => value.push(payload.task));
+      return state
+        .update('tasks', value => value.push(payload.task))
+        .update('filter', () => payload.filter);
     case FILTER_TASKS:
       return state
         .update('filteredTasks', () => new List(payload.tasks))
         .update('filter', () => payload.filter);
+    case SHOW_ALL_TASKS:
+      return state.update('filter', () => payload.filter);
     default:
       return state;
   }

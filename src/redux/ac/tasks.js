@@ -1,4 +1,4 @@
-import { ADD_TASK, FILTER_TASKS } from '../constants/tasks';
+import { ADD_TASK, FILTER_TASKS, SHOW_ALL_TASKS } from '../constants/tasks';
 
 export const addTask = value => {
   const taskId = Date.parse(new Date()) + String(Math.random());
@@ -10,6 +10,7 @@ export const addTask = value => {
         id: taskId,
         title: value,
         done: false,
+        filter: true,
       },
     },
   };
@@ -21,6 +22,16 @@ export const filterTask = filteredTasks => {
     payload: {
       tasks: [...filteredTasks],
       filter: true,
+    },
+  };
+};
+
+export const showAllTasks = () => {
+  return {
+    type: SHOW_ALL_TASKS,
+    payload: {
+      tasks: [],
+      filter: false,
     },
   };
 };
