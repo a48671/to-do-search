@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { addTask } from '../../redux/ac/tasks';
+import { addTask, filterTask } from '../../redux/ac/tasks';
 
 import { Wrapper, ButtonsList, BlockForInput, ButtonsItem } from './styled';
 import InputTask from './InputTask';
@@ -16,7 +16,7 @@ class Control extends PureComponent {
   render() {
     const { value } = this.state;
 
-    const { onChangeHandler, addTaskHandler } = this;
+    const { onChangeHandler, addTaskHandler, filterTaskHandler } = this;
 
     return (
       <Wrapper>
@@ -32,7 +32,7 @@ class Control extends PureComponent {
             <Button title="Add task" onClickHandler={addTaskHandler} />
           </ButtonsItem>
           <ButtonsItem>
-            <Button title="Search" />
+            <Button title="Search" onClickHandler={filterTaskHandler} />
           </ButtonsItem>
         </ButtonsList>
       </Wrapper>
@@ -51,19 +51,55 @@ class Control extends PureComponent {
     this.props.addTask(value);
     this.setState({ value: '' });
   };
+
+  filterTaskHandler = () => {
+    const { tasks, filterTask } = this.props;
+    const value = String(this.state.value);
+
+    if (!value) return;
+
+    const fiteredTasks = tasks.reduce((acc, task, index) => {
+      const indexConcurrence = ~task.title.indexOf(value);
+
+      const foundTask = task;
+      foundTask.index = index;
+
+      if (indexConcurrence) {
+        return [...acc, foundTask];
+      }
+      return acc;
+    }, []);
+
+    if (fiteredTasks.length) filterTask(fiteredTasks);
+  };
 }
 
 Control.propTypes = {
+  tasks: PropTypes.array,
   addTask: PropTypes.func,
+  filterTask: PropTypes.func,
+};
+
+Control.defaultProps = {
+  tasks: [],
+  addTask: () => null,
+  filterTask: () => null,
+};
+
+const mapStateToProps = state => {
+  return {
+    tasks: state.get('tasks').toJS(),
+  };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     addTask: value => dispatch(addTask(value)),
+    filterTask: filteredTasks => dispatch(filterTask(filteredTasks)),
   };
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Control);

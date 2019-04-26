@@ -33,6 +33,7 @@
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-prettier": "^3.0.1",
     "husky": "^2.1.0",
+    "immutable": "^4.0.0-rc.12",
     "lint-staged": "^8.1.5",
     "prettier": "^1.17.0",
     "prop-types": "^15.7.2",

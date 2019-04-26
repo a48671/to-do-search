@@ -10,3 +10,19 @@ export const Message = styled.div.attrs({ className: 'tasks-list__message' })`
   font-size: 16px;
   color: ${colors.dark};
 `;
+
+export const ShowAllTasks = styled.div.attrs({
+  className: 'tasks-list__show-all-tasks',
+})`
+  padding: 10px 20px 10px;
+  font-size: 16px;
+  color: ${colors.wight};
+  text-align: center;
+  background-color: ${colors.gray};
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    background-color: ${colors.grayLight};
+    color: ${colors.dark};
+  }
+`;

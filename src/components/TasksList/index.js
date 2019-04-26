@@ -1,29 +1,36 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import { Wrapper, Message } from './styled';
+import { Wrapper, Message, ShowAllTasks } from './styled';
 import TaskItem from './TaskItem';
 
 class TasksList extends PureComponent {
   render() {
     const { tasks } = this.props;
 
-    return <Wrapper>{this.renderTasks(tasks)}</Wrapper>;
+    return (
+      <Wrapper>
+        {this.renderTasks(tasks)}
+        {this.showAllTasks()}
+      </Wrapper>
+    );
   }
 
+  showAllTasks = () => {
+    if (!this.props.filter) return null;
+    return <ShowAllTasks onClick={() => null}>Show all tasks</ShowAllTasks>;
+  };
+
   renderTasks = tasks => {
-    const keysTasks = Object.keys(tasks);
+    if (!tasks.length) return <Message>No tasks</Message>;
 
-    if (!keysTasks.length) return <Message>No tasks</Message>;
-
-    return keysTasks.map(keyTask => {
-      const currentTask = tasks[keyTask];
-
+    return tasks.map((task, index) => {
       return (
         <TaskItem
-          key={keyTask}
-          title={currentTask.title}
-          done={currentTask.done}
+          index={index}
+          key={task.id}
+          title={task.title}
+          done={task.done}
         />
       );
     });
@@ -31,11 +38,13 @@ class TasksList extends PureComponent {
 }
 
 TasksList.propTypes = {
-  tasks: PropTypes.object,
+  tasks: PropTypes.array,
+  filter: PropTypes.bool,
 };
 
 TasksList.defaultProps = {
-  tasks: {},
+  tasks: [],
+  filter: false,
 };
 
 export default TasksList;

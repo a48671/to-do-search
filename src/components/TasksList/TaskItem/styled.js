@@ -6,6 +6,7 @@ export const Wrapper = styled.div.attrs({ className: 'tasks-item' })`
   padding: 10px 20px;
   border-bottom: 1px solid ${colors.gray};
   overflow: hidden;
+  transition: 0.3s;
   &:hover {
     background-color: ${colors.grayLight};
   }
@@ -17,6 +18,7 @@ export const Checkbox = styled.div.attrs({ className: 'tasks-item__checkbox' })`
   height: 20px;
   border: 2px solid ${colors.dark};
   cursor: pointer;
+  transition: 0.3s;
   &:after {
     display: block;
     content: '';
