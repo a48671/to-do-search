@@ -1,26 +1,26 @@
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import {Wrapper} from './styled';
+import { Wrapper, Checkbox, Title, Close } from './styled';
 
 class TaskItem extends PureComponent {
-	render() {
+  render() {
+    const { title, done } = this.props;
 
-		const {title} = this.props;
-
-		return (
-			<Wrapper>
-				{title}
-			</Wrapper>
-		);
-	}
+    return (
+      <Wrapper>
+        <Checkbox done={done} />
+        <Title>{title}</Title>
+        <Close />
+      </Wrapper>
+    );
+  }
 }
 
 TaskItem.propTypes = {
-	title: PropTypes.string,
-	text: PropTypes.string,
-	id: PropTypes.string,
-	done: PropTypes.bool
+  title: PropTypes.string,
+  id: PropTypes.string,
+  done: PropTypes.bool,
 };
 
 export default TaskItem;

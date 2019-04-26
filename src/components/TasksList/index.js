@@ -1,33 +1,27 @@
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import {Wrapper} from './styled';
-import TaskItem from "./TaskItem";
+import { Wrapper } from './styled';
+import TaskItem from './TaskItem';
 
 class TasksList extends PureComponent {
-	render() {
-		return (
-			<Wrapper>
-				<TaskItem
-					title="Task"
-				/>
-				<TaskItem
-					title="Task"
-				/>
-				<TaskItem
-					title="Task"
-				/>
-			</Wrapper>
-		);
-	}
+  render() {
+    return (
+      <Wrapper>
+        <TaskItem title="Task" />
+        <TaskItem title="Task" done={true} />
+        <TaskItem title="Task" />
+      </Wrapper>
+    );
+  }
 }
 
 TasksList.propTypes = {
-	tasks: PropTypes.object
+  tasks: PropTypes.object,
 };
 
 TasksList.defaultProps = {
-	tasks: []
-}
+  tasks: {},
+};
 
 export default TasksList;

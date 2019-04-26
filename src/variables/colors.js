@@ -1,6 +1,6 @@
 export const colors = {
-	grayLight: '#eee',
-	gray: '#aeaeae',
-	dark: '#333',
-	wight: '#fff'
-}
+  grayLight: '#cef79e',
+  gray: '#79a04c',
+  dark: '#081b09',
+  wight: '#fff',
+};
