@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import tasksReducer from '../reducers/tasksReducer';
 
 const composeEnhancers =
@@ -8,9 +8,9 @@ const composeEnhancers =
       })
     : compose;
 
-const enhancer = composeEnhancers(applyMiddleware(...middleware));
-
 const middleware = [];
+
+const enhancer = composeEnhancers(applyMiddleware(...middleware));
 
 const store = createStore(tasksReducer, enhancer);
 

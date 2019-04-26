@@ -12,7 +12,7 @@ export const Wrapper = styled.div.attrs({ className: 'control' })`
   }
 `;
 
-export const BlockForInput = styled.div.attrs({ className: 'control__input' })`
+export const BlockForInput = styled.form.attrs({ className: 'control__input' })`
   width: 50%;
   @media (max-width: 500px) {
     width: 100%;
