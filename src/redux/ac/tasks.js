@@ -1,4 +1,9 @@
-import { ADD_TASK, FILTER_TASKS, SHOW_ALL_TASKS } from '../constants/tasks';
+import {
+  ADD_TASK,
+  FILTER_TASKS,
+  SHOW_ALL_TASKS,
+  CHECK_TASK,
+} from '../constants/tasks';
 
 export const addTask = value => {
   const taskId = Date.parse(new Date()) + String(Math.random());
@@ -32,6 +37,15 @@ export const showAllTasks = () => {
     payload: {
       tasks: [],
       filter: false,
+    },
+  };
+};
+
+export const checkTask = index => {
+  return {
+    type: CHECK_TASK,
+    payload: {
+      index,
     },
   };
 };
