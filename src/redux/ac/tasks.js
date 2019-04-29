@@ -3,6 +3,7 @@ import {
   FILTER_TASKS,
   SHOW_ALL_TASKS,
   CHECK_TASK,
+  DELETE_TASK,
 } from '../constants/tasks';
 
 export const addTask = value => {
@@ -41,11 +42,22 @@ export const showAllTasks = () => {
   };
 };
 
-export const checkTask = index => {
+export const checkTask = (index, indexMain) => {
   return {
     type: CHECK_TASK,
     payload: {
       index,
+      indexMain,
+    },
+  };
+};
+
+export const deleteTask = (index, indexMain) => {
+  return {
+    type: DELETE_TASK,
+    payload: {
+      index,
+      indexMain,
     },
   };
 };

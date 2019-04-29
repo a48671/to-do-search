@@ -32,6 +32,7 @@ class TasksList extends PureComponent {
       return (
         <TaskItem
           index={index}
+          indexMain={task.indexMain}
           key={task.id}
           title={task.title}
           done={task.done}

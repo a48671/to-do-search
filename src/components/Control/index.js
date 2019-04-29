@@ -62,7 +62,7 @@ class Control extends PureComponent {
       const indexConcurrence = ~task.title.indexOf(value);
 
       const foundTask = task;
-      foundTask.index = index;
+      foundTask.indexMain = index;
 
       if (indexConcurrence) {
         return [...acc, foundTask];
