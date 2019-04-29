@@ -10,7 +10,7 @@ import Button from '../Batton';
 
 class Control extends PureComponent {
   state = {
-    value: '',
+    value: ''
   };
 
   render() {
@@ -77,25 +77,25 @@ class Control extends PureComponent {
 Control.propTypes = {
   tasks: PropTypes.array,
   addTask: PropTypes.func,
-  filterTask: PropTypes.func,
+  filterTask: PropTypes.func
 };
 
 Control.defaultProps = {
   tasks: [],
   addTask: () => null,
-  filterTask: () => null,
+  filterTask: () => null
 };
 
 const mapStateToProps = state => {
   return {
-    tasks: state.get('tasks').toJS(),
+    tasks: state.get('tasks').toJS()
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     addTask: value => dispatch(addTask(value)),
-    filterTask: filteredTasks => dispatch(filterTask(filteredTasks)),
+    filterTask: filteredTasks => dispatch(filterTask(filteredTasks))
   };
 };
 
