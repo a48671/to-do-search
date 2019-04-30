@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { felterSelector } from '../../selectors/tasks';
 
 import { addTask, filterTask } from '../../redux/ac/tasks';
 
@@ -58,17 +59,7 @@ class Control extends PureComponent {
 
     if (!value) return;
 
-    const fiteredTasks = tasks.reduce((acc, task, index) => {
-      const indexConcurrence = ~task.title.indexOf(value);
-
-      const foundTask = task;
-      foundTask.indexMain = index;
-
-      if (indexConcurrence) {
-        return [...acc, foundTask];
-      }
-      return acc;
-    }, []);
+    const fiteredTasks = felterSelector({ tasks, value });
 
     if (fiteredTasks.length) filterTask(fiteredTasks);
   };
